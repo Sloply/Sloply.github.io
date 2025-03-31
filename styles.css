@@ -1,0 +1,382 @@
+/* Fondo oscuro */
+body {
+    background-color: #1A1A1D;
+    color: #F8F9FA; /* Texto en un tono claro */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo del encabezado */
+/* --- Estilos generales del header --- */
+header {
+    background-color: #1A1A1D;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+/* --- Contenedor para el texto y las imágenes --- */
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 900px;
+    position: relative;
+}
+
+/* --- Título animado "Hola Mundo, soy ___" --- */
+header h1 {
+    color: #F8F9FA;
+    font-size: 2em;  /* Reducido de 2.5em a 2em */
+    margin: 0 10px;
+    white-space: nowrap;
+}
+
+/* --- Estilo para los nombres "Russell" y "Sloply" --- */
+.nombre-dinamico {
+    font-size: 2em; /* Reducido para mejor ajuste */
+    font-weight: bold;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid white;
+    padding-left: 10px;
+    animation: blinkCursor 0.8s infinite;
+}
+
+/* --- Cursor parpadeante --- */
+@keyframes blinkCursor {
+    50% { border-color: transparent; }
+}
+
+/* --- Contenedor de imágenes --- */
+.perfil-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px; /* Espacio reservado para la imagen */
+    height: 250px;
+    position: relative;
+}
+
+/* --- Imagen de perfil (ajustada para que no sobresalga) --- */
+.perfil {
+    width: 250px;
+    height: auto;
+    position: absolute;
+    top: 40px; /* Ajusta este valor para bajarlo */
+    left: 50%; /* Mantiene la posición centrada */
+    transform: translateX(-50%); /* Evita que se desplace a la izquierda */
+    transition: opacity 0.5s ease-in-out;
+}
+
+#img-russell { opacity: 1; }  /* Imagen Russell inicia visible */
+#img-sloply { opacity: 0; }   /* Imagen Sloply inicia oculta */
+
+/* --- Barra de navegación --- */
+nav ul {
+    list-style-type: none;
+    margin: 20px 0 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: #F8F9FA;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px;
+    transition: color 0.5s ease-in-out;
+}
+
+/* --- Hover dinámico según el modo actual --- */
+nav a:hover {
+    color: var(--hover-color);
+}
+
+
+
+/* Estilos para las secciones */
+section {
+    padding: 40px;
+    margin: 20px;
+    background-color: #183B4E; /* Fondo azul más oscuro */
+    border-radius: 10px;
+}
+
+section h2 {
+    color: var(--texto-color, #E63946); /* Color por defecto Russell */
+    transition: color 0.3s ease-in-out;
+    font-size: 2em;
+}
+
+/* Estilo de los enlaces */
+a {
+    color: #DDA853; /* Enlaces dorados en todo el sitio */
+    text-decoration: none; /* Sin subrayado por defecto */
+}
+
+a:hover {
+    color: white; /* Cambiar a blanco al pasar el cursor */
+    text-decoration: underline; /* Subrayar cuando el cursor pasa por encima */
+}
+
+/* Estilo para el pie de página */
+footer {
+    background-color: rgb(39, 84, 138);
+    color: rgb(245, 238, 220);
+    padding: 10px;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Responsive Design: ajustar el tamaño de los textos y la disposición en pantallas más pequeñas */
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 16px; /* Reducir el tamaño de fuente */
+    }
+
+    header h1 {
+        font-size: 2em; /* Hacer el título más pequeño en pantallas pequeñas */
+    }
+
+    nav ul li {
+        display: block; /* Colocar los enlaces en columna en pantallas pequeñas */
+        margin-bottom: 10px;
+    }
+}
+iframe {
+    border: none; /* Elimina cualquier borde */
+    padding: 0;   /* Asegúrate de que no haya rellenos internos */
+    margin: 0;    /* Elimina márgenes externos */
+    box-shadow: none; /* Evita posibles sombras predeterminadas */
+}
+
+/* Estilos para el modal (ventana emergente) */
+/* El estilo para el modal */
+/* Estilos para el modal (ventana emergente) */
+.modal {
+    display: none; /* Escondido por defecto */
+    position: fixed; /* Se coloca de manera fija */
+    z-index: 1; /* Aparece encima de todo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Hace scroll si la imagen es más grande que la ventana */
+    background-color: rgba(0, 0, 0, 0.9); /* Fondo oscuro con opacidad */
+}
+
+/* El estilo para la imagen dentro del modal */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    /* Añadir margen superior para ajustar la imagen */
+    margin-top: 5px; /* Ajusta este valor para mover la imagen hacia arriba o abajo */
+}
+
+/* El estilo para el texto de la imagen */
+#caption {
+    text-align: center;
+    color: #f1f1f1;
+    padding: 10px 0;
+    font-size: 18px;
+}
+
+/* El botón de cerrar */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f3f2ec;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: var(--texto-color, #E63946); /* Cambia el color al pasar el ratón */;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Estilos generales para las secciones */
+section {
+    background-color: #2C2F36; /* Color oscuro */
+    color: #F8F9FA;  /* Texto blanco */
+    padding: 15px; /* Un poco menos de padding para que sean más pequeñas */
+    margin: 15px 0;
+    border-radius: 20px; /* Bordes redondeados */
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    transform: scale(0.95); /* Sección más pequeña por defecto */
+    box-shadow: none; /* Sin sombra por defecto */
+}
+
+/* Efecto de agrandamiento cuando el mouse está sobre la sección */
+section:hover {
+    transform: scale(1); /* Vuelve al tamaño normal cuando pasa el ratón */
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2); /* Sombra suave para resaltar */
+}
+
+/* Estilos del contenedor sobre-mi */
+#sobre-mi .sobre-mi {
+    display: flex; /* Usa Flexbox para el layout */
+    align-items: flex-start; /* Alinea los elementos al inicio (parte superior) */
+    justify-content: flex-start; /* Alinea los elementos al principio */
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en una nueva línea si es necesario */
+    gap: 20px; /* Espacio entre los elementos */
+    margin-top: 20px; /* Ajuste de margen superior */
+}
+
+/* Estilos para el contenedor de la imagen */
+#sobre-mi .imagen-sobre-mi {
+    width: 50%; /* Tamaño de la imagen */
+    text-align: center; /* Centra la imagen dentro del div */
+}
+
+/* Estilos de la imagen */
+#sobre-mi .imagen-sobre-mi img {
+    width: 30%; /* La imagen ocupa el 100% del ancho del contenedor */
+    height: auto; /* Ajusta la altura automáticamente para mantener la proporción */
+    border-radius: 15px; /* Bordes redondeados */
+    transition: transform 0.2s ease; /* Efecto suave al hacer hover */
+    transform: translateY(-50px); /* Mueve la imagen hacia arriba */
+}
+
+/* Efecto hover de la imagen */
+#sobre-mi .imagen-sobre-mi img:hover {
+    transform: scale(1.15); /* Inflar un poco al hacer hover */
+}
+
+/* Estilos del texto */
+#sobre-mi .texto {
+    flex: 1; /* Hace que el texto ocupe el espacio restante */
+    max-width: 60%; /* Limita el ancho del texto para que no ocupe demasiado espacio */
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%); /* Centra el nav horizontalmente */
+    width: 100%; /* Mantiene el fondo ocupando toda la pantalla */
+    background-color: #1A1A1D; /* Ajusta el color de fondo */
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: top 0.3s;
+    padding: 0 20px; /* Espaciado interno si es necesario */
+    display: flex;
+    justify-content: center; /* Centra el contenido dentro del nav */
+    align-items: center; /* Centra verticalmente el contenido */
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px; /* Espaciado entre los elementos */
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px; /* Reduce el tamaño del texto */
+    padding: 8px 12px; /* Ajusta el espaciado */
+}
+
+.nav-hidden {
+    top: -20px; /* Ajusta según la altura de tu nav */
+}
+
+/*certificados*/
+#certificados {
+    padding: 20px;
+}
+
+.certificados h2 {
+    text-align: center;
+}
+
+.certificado-section {
+    display: none;
+}
+
+.certificado {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.certificado:hover {
+    transform: scale(1.05);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    margin: 5% auto;
+    display: block;
+    max-width: 90%;
+    height: auto;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.custom-title {
+    text-decoration: underline;  /* Subrayado */
+    text-decoration-thickness: 3px;  /* Grosor del subrayado */
+    text-align: center;  /* Centrar el texto */
+    display: flex;  
+    justify-content: center;  /* Centrar horizontalmente */
+    transition: color 0.3s ease, text-decoration-color 0.3s ease; /* Transición suave */
+}
+
+/* Cambio de color al pasar el mouse */
+.custom-title:hover {
+    color: var(--texto-color, #E63946); /* Nuevo color del texto */
+    text-decoration-color: var(--texto-color, #E63946); /* Nuevo color del subrayado */
+}
+
+/*icono casa*/
+.home-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--texto-color, #E63946); /* Color por defecto */
+}
+
+
+
